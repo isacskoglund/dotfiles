@@ -1,5 +1,5 @@
-
 source ~/.fzf
+source ~/.go
 if [ -f ~/.extra ]; then
 	source ~/.extra
 fi
