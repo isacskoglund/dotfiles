@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-
+local util = require("lspconfig/util")
 -- enable keybinds for available lsp server
 local on_attach = function(_, bufnr)
 	local opts = { noremap = true, silent = true }
@@ -52,6 +52,9 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 lspconfig.gopls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gowork", "gotmpl" },
+	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 })
 lspconfig.pyright.setup({
 	capabilities = capabilities,
@@ -59,21 +62,21 @@ lspconfig.pyright.setup({
 })
 
 lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = { -- custom settings for lua
-    Lua = {
-      -- make the language server recognize "vim" global
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        -- make language server aware of runtime files
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.stdpath("config") .. "/lua"] = true,
-        },
-      },
-    },
-  },
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = { -- custom settings for lua
+		Lua = {
+			-- make the language server recognize "vim" global
+			diagnostics = {
+				globals = { "vim" },
+			},
+			workspace = {
+				-- make language server aware of runtime files
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.stdpath("config") .. "/lua"] = true,
+				},
+			},
+		},
+	},
 })
