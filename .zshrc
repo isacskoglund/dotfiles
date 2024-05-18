@@ -16,7 +16,8 @@ HISTFILE=~/.cache/zsh/history
 
 # Basic auto/tab complete:
 autoload -U compinit
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
