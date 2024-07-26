@@ -14,6 +14,10 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
+# Aliases
+alias tf="terraform"
+alias t="tmux"
+
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select 
@@ -28,6 +32,9 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+
+# In-line completion keybinds:
+bindkey '^ ' autosuggest-accept
 
 # vim mode
 bindkey -v
@@ -72,3 +79,6 @@ bindkey -s '^o' 'lfcd^M'
 # Activate syntax highlighting and autosuggestions. Must be at eof.
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
