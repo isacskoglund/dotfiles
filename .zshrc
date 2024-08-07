@@ -17,6 +17,7 @@ HISTFILE=~/.cache/zsh/history
 # Aliases
 alias tf="terraform"
 alias t="tmux"
+alias ta="tmux new-session -A -s default"
 
 # Basic auto/tab complete:
 autoload -U compinit
