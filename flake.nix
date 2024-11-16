@@ -1,15 +1,13 @@
 {
-  description = "Home Manager configuration of isacskoglund";
+  description = "Example nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-darwin, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
@@ -32,24 +30,17 @@
       system.stateVersion = 5;
 
       # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
+      nixpkgs.hostPlatform = "x86_64-darwin";
     };
   in
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."Isacs-MacBook-Air" = nix-darwin.lib.darwinSystem {
-      modules = [
-        configuration 
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.isacskoglund = import ./home.nix;
-        }
-      ];
+    darwinConfigurations."simple" = nix-darwin.lib.darwinSystem {
+      modules = [ configuration ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."Isacs-MacBook-Air".pkgs;
+    darwinPackages = self.darwinConfigurations."simple".pkgs;
   };
 }
