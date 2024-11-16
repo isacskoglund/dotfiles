@@ -53,7 +53,6 @@
     ".zshrc".source = ../../.zshrc;
     ".zshenv".source = ../../.zshenv;
     ".fzf".source = ../../.fzf;
-    ".config/tmux".source = ../tmux;
     ".config/nvim".source = ../nvim;
     ".config/alacritty".source = ../alacritty;
     # ".config/home-manager".source = ../.config/home-manager;
@@ -121,21 +120,13 @@
   programs.tmux = {
     enable = true;
 
-    plugins = with pkgs; [
-      # sensible
-      # yank
-      # vim-tmux-navigator 
-      # catppuccin
-      {
-        plugin = tmuxPlugins.catppuccin;
-        extraConfig = '' 
-        set -g @catppuccin_flavour 'frappe'
-        set -g @catppuccin_window_tabs_enabled on
-        set -g @catppuccin_date_time "%H:%M"
-        '';
-      }
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      yank
+      vim-tmux-navigator 
+      catppuccin
     ];
 
-    # extraConfig = "run-shell ${pkgs.tmuxPlugins.sidebar}/share/tmux-plugins/catppuccin/catppuccin.tmux";
+    extraConfig = (builtins.readFile ../tmux/tmux.conf);
   };
 }
