@@ -80,6 +80,17 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.git = {
+    enable = true;
+    userName = "Isac Skoglund";
+    userEmail = "isacskoglund02@gmail.com";
+  };
+
+  programs.alacritty = {
+    enable = true;
+  };
+
+
   programs.neovim = {
     enable = true;
 
