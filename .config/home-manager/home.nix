@@ -113,8 +113,8 @@
       nvim-cmp
       cmp-path
       cmp-nvim-lsp
-	  vim-tmux-navigator
-	  neogit
+      vim-tmux-navigator
+      neogit
     ];
   };
 
