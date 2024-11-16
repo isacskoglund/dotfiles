@@ -122,10 +122,10 @@
     enable = true;
 
     plugins = with pkgs.tmuxPlugins; [
-      sensible
-      yank
-      vim-tmux-navigator 
-      catppuccin
+      # sensible
+      # yank
+      # vim-tmux-navigator 
+      # catppuccin
     ];
   };
 }
