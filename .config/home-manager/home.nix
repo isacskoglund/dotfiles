@@ -127,5 +127,7 @@
       vim-tmux-navigator 
       catppuccin
     ];
+
+    extraTmuxConf = "run-shell ${pkgs.tmuxPlugins.sidebar}/share/tmux-plugins/sidebar/sidebar.tmux"
   };
 }
