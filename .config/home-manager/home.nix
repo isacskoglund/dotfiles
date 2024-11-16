@@ -122,12 +122,20 @@
     enable = true;
 
     plugins = with pkgs.tmuxPlugins; [
-      sensible
-      yank
-      vim-tmux-navigator 
-      catppuccin
+      # sensible
+      # yank
+      # vim-tmux-navigator 
+      # catppuccin
+      {
+        plugin = tmuxPlugins.catppuccin;
+        extraConfig = '' 
+        set -g @catppuccin_flavour 'frappe'
+        set -g @catppuccin_window_tabs_enabled on
+        set -g @catppuccin_date_time "%H:%M"
+        '';
+      }
     ];
 
-    extraTmuxConf = "run-shell ${pkgs.tmuxPlugins.sidebar}/share/tmux-plugins/sidebar/sidebar.tmux";
+    extraConf = "run-shell ${pkgs.tmuxPlugins.sidebar}/share/tmux-plugins/catppuccin/catppuccin.tmux";
   };
 }
