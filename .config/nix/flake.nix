@@ -23,6 +23,7 @@
 
       # Enable alternative shell support in nix-darwin.
       # programs.fish.enable = true;
+      programs.zsh.enable = true;
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -41,6 +42,9 @@
     darwinConfigurations."Isacs-MacBook-Air" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration 
+        {
+          users.users.isacskoglund.home = "/Users/isacskoglund";
+        }
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -50,6 +54,6 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."Isacs-MacBook-Air".pkgs;
+    # darwinPackages = self.darwinConfigurations."Isacs-MacBook-Air".pkgs;
   };
 }
