@@ -54,7 +54,7 @@
     ".zshenv".source = ../../.zshenv;
     ".fzf".source = ../../.fzf;
     ".config/nvim".source = ../nvim;
-    ".config/alacritty".source = ../alacritty;
+    # ".config/alacritty".source = ../alacritty;
   };
 
   # Home Manager can also manage your environment variables through
@@ -85,11 +85,6 @@
     userName = "Isac Skoglund";
     userEmail = "isacskoglund02@gmail.com";
   };
-
-  programs.alacritty = {
-    enable = true;
-  };
-
 
   programs.neovim = {
     enable = true;
