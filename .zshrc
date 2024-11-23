@@ -1,8 +1,6 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(fzf --zsh)"
 
 # Prompt
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 zstyle ':prompt:pure:path' color red
 zstyle ':prompt:pure:prompt:*' color red
