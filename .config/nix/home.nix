@@ -86,6 +86,8 @@
     userEmail = "isacskoglund02@gmail.com";
   };
 
+  programs.zsh.enable = true;
+
   programs.neovim = {
     enable = true;
 
