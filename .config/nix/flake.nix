@@ -32,6 +32,15 @@
       users.users.isacskoglund.home = "/Users/isacskoglund";
       # nix.configureBuildUsers = true;
       # nix.useDaemon = true;
+
+      # Enable touch id for tmux according to: https://write.rog.gr/writing/using-touchid-with-tmux/
+      environment = {
+        etc."pam.d/sudo_local".text = ''
+          # Managed by Nix Darwin
+          auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
+          auth       sufficient     pam_tid.so
+        '';
+      };
     };
   in
   {
