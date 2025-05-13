@@ -20,16 +20,18 @@
   }:
   let
     configuration = { pkgs, ... }: {
+      nix.enable = false;
       nix.settings.experimental-features = "nix-command flakes";
       programs.zsh.enable = true;
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 5;
-	  security.pam.enableSudoTouchIdAuth = true;
+      security.pam.services.sudo_local.touchIdAuth = true;
+
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       users.users.isacskoglund.home = "/Users/isacskoglund";
-      nix.configureBuildUsers = true;
-      nix.useDaemon = true;
+      # nix.configureBuildUsers = true;
+      # nix.useDaemon = true;
     };
   in
   {
@@ -38,14 +40,15 @@
     darwinConfigurations."Isacs-MacBook-Air" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration 
-		nix-homebrew.darwinModules.nix-homebrew {
-		  nix-homebrew = {
-		    enable = true;
-			enableRosetta = true;
-			user = "isacskoglund";
-			autoMigrate = true;
-		  };
-		}
+        ./brew.nix
+        nix-homebrew.darwinModules.nix-homebrew {
+          nix-homebrew = {
+            enable = true;
+          enableRosetta = true;
+          user = "isacskoglund";
+          autoMigrate = true;
+          };
+        }
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
