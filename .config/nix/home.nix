@@ -98,7 +98,7 @@
       st = "status";
       co = "checkout";
       br = "branch";
-      cm = "commit";
+      cm = "commit -m";
       df = "diff";
       lg = "log --oneline --graph --decorate";
       lga = "log --oneline --graph --decorate --all";
