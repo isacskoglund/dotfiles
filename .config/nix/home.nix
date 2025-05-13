@@ -112,7 +112,7 @@
   programs.zsh.history = {
     save = 10000;
     size = 10000;
-    path = ".cache/zsh/history";
+    path = "~/.cache/zsh/history";
   };
   programs.zsh = {
     syntaxHighlighting.enable = true;
@@ -121,7 +121,8 @@
       tf = "terraform";
       t = "tmux";
       ta = "tmux new-session -A -s default";
-      rebuild = "nix run nix-darwin -- switch --flake ~/Repos/dotfiles/.config/nix";
+      # TODO: Avoid hardcoding the path to the flake, use a variable in ~/.zshenv or similar
+      switch = "nix run nix-darwin -- switch --flake ~/Repos/dotfiles/.config/nix";
     };
     initContent = builtins.readFile ../../.zshrc.extra.sh;
   };
@@ -177,7 +178,7 @@
       catppuccin
     ];
 
-    extraConfig = (builtins.readFile ../tmux/tmux.conf);
+    extraConfig = (builtins.readFile ../tmux/tmux.conf) + "set -g default-command ${pkgs.zsh}/bin/zsh\n";
   };
 
 }
