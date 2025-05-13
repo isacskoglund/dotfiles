@@ -77,6 +77,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
   };
 
   # Let Home Manager install and manage itself.
