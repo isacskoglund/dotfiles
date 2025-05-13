@@ -18,6 +18,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.pure-prompt
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -51,7 +52,7 @@
     # '';
 
     ".zshrc".source = ../../.zshrc;
-    ".zshenv".source = ../../.zshenv;
+    # ".zshenv".source = ../../.zshenv;
     ".fzf".source = ../../.fzf;
     ".config/nvim".source = ../nvim;
     # ".config/alacritty".source = ../alacritty;
@@ -86,7 +87,22 @@
     userEmail = "isacskoglund02@gmail.com";
   };
 
+  # Setup zsh
   programs.zsh.enable = true;
+  programs.zsh.history = {
+    save = 10000;
+    size = 10000;
+    path = ".cache/zsh/history";
+  };
+  programs.zsh = {
+    enableSyntaxHighlighting = true;
+    enableAutosuggestions = true;
+  };
+
+  # Configure fzf
+  programs.fzf = {
+    enable = true;
+  };
 
   programs.neovim = {
     enable = true;
