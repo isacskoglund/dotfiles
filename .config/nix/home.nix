@@ -54,7 +54,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".zshrc".source = ../../.zshrc;
+    # ".zshrc".source = ../../.zshrc;
     ".zshenv".source = ../../.zshenv;
     ".fzf".source = ../../.fzf;
     ".config/nvim".source = ../nvim;
@@ -100,6 +100,13 @@
   programs.zsh = {
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
+    shellAliases = {
+      tf = "terraform";
+      t = "tmux";
+      ta = "tmux new-session -A -s default";
+      rebuild = "nix run nix-darwin -- switch --flake ~/Repos/dotfiles/.config/nix";
+    };
+    initExtra = builtins.readFile ../../.zshrc.extra.sh;
   };
 
   # Configure fzf
