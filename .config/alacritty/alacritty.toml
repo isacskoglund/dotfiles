@@ -1,6 +1,6 @@
 # "cursor.style" = "Block"
 # "debug.render_timer" = false
-live_config_reload = true
+general.live_config_reload = true
 # theme = "Catppuccin"
 # "window.opacity" = 1.0
 
@@ -89,7 +89,7 @@ mouse = "Middle"
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 
 [window]

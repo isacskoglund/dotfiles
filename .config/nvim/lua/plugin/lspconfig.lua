@@ -49,20 +49,24 @@ end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.gopls.setup({
+lspconfig["gopls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 })
-lspconfig.pyright.setup({
+lspconfig["rust_analyzer"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "rust" },
+})
+lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	filetypes = { "python" },
 })
 
-lspconfig.lua_ls.setup({
+lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = { -- custom settings for lua
