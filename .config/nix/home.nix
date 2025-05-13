@@ -88,6 +88,12 @@
     enable = true;
     userName = "Isac Skoglund";
     userEmail = "isacskoglund02@gmail.com";
+    extraConfig = {
+      credential = {
+        # Allow git to use the credentials from gh cli when pushing to github
+        helper = "!gh auth git-credential";
+      };
+    };
   };
 
   # Setup zsh
@@ -106,7 +112,7 @@
       ta = "tmux new-session -A -s default";
       rebuild = "nix run nix-darwin -- switch --flake ~/Repos/dotfiles/.config/nix";
     };
-    initExtra = builtins.readFile ../../.zshrc.extra.sh;
+    initContent = builtins.readFile ../../.zshrc.extra.sh;
   };
 
   # Configure fzf
