@@ -11,12 +11,12 @@
   };
 
   outputs = inputs@{ 
-	self, 
-	nixpkgs, 
-	home-manager, 
-	nix-darwin, 
-	nix-homebrew,
-	... 
+    self, 
+    nixpkgs, 
+    home-manager, 
+    nix-darwin, 
+    nix-homebrew,
+    ... 
   }:
   let
     configuration = { pkgs, ... }: {
@@ -26,12 +26,8 @@
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 5;
       security.pam.services.sudo_local.touchIdAuth = true;
-
       nixpkgs.hostPlatform = "aarch64-darwin";
-
       users.users.isacskoglund.home = "/Users/isacskoglund";
-      # nix.configureBuildUsers = true;
-      # nix.useDaemon = true;
 
       # Enable touch id for tmux according to: https://write.rog.gr/writing/using-touchid-with-tmux/
       environment = {
