@@ -94,6 +94,17 @@
         helper = "!gh auth git-credential";
       };
     };
+    aliases = {
+      st = "status";
+      co = "checkout";
+      br = "branch";
+      cm = "commit";
+      df = "diff";
+      lg = "log --oneline --graph --decorate";
+      lga = "log --oneline --graph --decorate --all";
+      lga1 = "log --oneline --graph --decorate --all -n 1";
+      lga2 = "log --oneline --graph --decorate --all -n 2";
+    };
   };
 
   # Setup zsh
