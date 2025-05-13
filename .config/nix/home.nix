@@ -55,10 +55,10 @@
     # '';
 
     ".zshrc".source = ../../.zshrc;
-    # ".zshenv".source = ../../.zshenv;
+    ".zshenv".source = ../../.zshenv;
     ".fzf".source = ../../.fzf;
     ".config/nvim".source = ../nvim;
-    # ".config/alacritty".source = ../alacritty;
+    ".config/alacritty".source = ../alacritty;
   };
 
   # Home Manager can also manage your environment variables through
@@ -155,4 +155,5 @@
 
     extraConfig = (builtins.readFile ../tmux/tmux.conf);
   };
+
 }
