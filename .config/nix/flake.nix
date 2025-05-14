@@ -23,11 +23,18 @@
       nix.enable = false;
       nix.settings.experimental-features = "nix-command flakes";
       programs.zsh.enable = true;
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-      system.stateVersion = 5;
+      users.users.isacskoglund.home = "/Users/isacskoglund";
+      system = {
+        stateVersion = 5;
+        configurationRevision = self.rev or self.dirtyRev or null;
+
+        # Show hidden files in Finder
+        defaults.finder.AppleShowAllFiles = true;
+        # Show full path in Finder title bar
+        defaults.finder._FXShowPosixPathInTitle = true;
+      };
       security.pam.services.sudo_local.touchIdAuth = true;
       nixpkgs.hostPlatform = "aarch64-darwin";
-      users.users.isacskoglund.home = "/Users/isacskoglund";
 
       # Enable touch id for tmux according to: https://write.rog.gr/writing/using-touchid-with-tmux/
       environment = {
