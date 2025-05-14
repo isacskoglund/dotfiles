@@ -57,6 +57,7 @@
     ".fzf".source = ../../.fzf;
     ".config/nvim".source = ../nvim;
     ".config/alacritty".source = ../alacritty;
+    ".config/karabiner".source = ../karabiner;
   };
 
   # Home Manager can also manage your environment variables through
