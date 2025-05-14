@@ -111,7 +111,7 @@
   programs.zsh.history = {
     save = 10000;
     size = 10000;
-    path = "~/.cache/zsh/history";
+    path = "${config.home.homeDirectory}/.cache/zsh/history";
   };
   programs.zsh = {
     syntaxHighlighting.enable = true;
