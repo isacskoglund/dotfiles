@@ -46,8 +46,8 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    permitRootLogin = "yes";
-    passwordAuthentication = true;
+    permitRootLogin = "no";
+    passwordAuthentication = false;
   };
 
   security.sudo = {
