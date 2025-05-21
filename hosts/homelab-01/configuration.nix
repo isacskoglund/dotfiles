@@ -48,7 +48,12 @@
     extraRules = [
       {
         users = ["isacskoglund"];
-        options = ["NOPASSWD"];
+        commands = [
+          {
+            command = "ALL";
+            options = ["NOPASSWD"];
+          }
+        ];
       }
     ]
   }
