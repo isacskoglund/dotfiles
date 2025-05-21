@@ -45,17 +45,18 @@
 
   security.sudo = {
     enable = true;
-    extraRules = [
-      {
-        users = ["isacskoglund"];
-        commands = [
-          {
-            command = "ALL";
-            options = ["NOPASSWD"];
-          }
-        ];
-      }
-    ]
+    wheelNeedsPassword = false;
+    # extraRules = [
+    #   {
+    #     users = ["isacskoglund"];
+    #     commands = [
+    #       {
+    #         command = "ALL";
+    #         options = ["NOPASSWD"];
+    #       }
+    #     ];
+    #   }
+    # ]
   }
 
   # Open ports in the firewall.
