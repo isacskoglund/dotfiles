@@ -52,6 +52,7 @@
 
   security.sudo = {
     enable = true;
+    wheelNeedsPassword = true;
     extraRules = [
       {
         users = ["isacskoglund"];
