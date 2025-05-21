@@ -62,7 +62,7 @@
           }
         ];
       }
-    ]
+    ];
   };
 
   # Open ports in the firewall.
