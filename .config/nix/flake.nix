@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-	nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+	  nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs = inputs@{ 
@@ -49,19 +49,11 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."Isacs-MacBook-Air" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."isac-mba-air" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration 
         ./brew.nix
         ./macos.nix
-        nix-homebrew.darwinModules.nix-homebrew {
-          nix-homebrew = {
-            enable = true;
-          enableRosetta = true;
-          user = "isacskoglund";
-          autoMigrate = true;
-          };
-        }
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
