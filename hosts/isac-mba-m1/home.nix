@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -54,10 +54,10 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".fzf".source = ../../.fzf;
-    ".config/nvim".source = ../nvim;
-    ".config/alacritty".source = ../alacritty;
-    ".config/karabiner".source = ../karabiner;
+    ".fzf".source = ./.fzf;
+    ".config/nvim".source = ./nvim;
+    ".config/alacritty".source = ./alacritty;
+    ".config/karabiner".source = ./karabiner;
   };
 
   # Home Manager can also manage your environment variables through
@@ -124,7 +124,7 @@
       # TODO: Avoid hardcoding the path to the flake, use a variable in ~/.zshenv or similar
       switch = "nix run nix-darwin -- switch --flake ~/Repos/dotfiles/.config/nix";
     };
-    initContent = builtins.readFile ../../.zshrc.extra.sh;
+    initContent = builtins.readFile ./.zshrc.extra.sh;
   };
 
   # Configure fzf
@@ -178,7 +178,6 @@
       catppuccin
     ];
 
-    extraConfig = (builtins.readFile ../tmux/tmux.conf) + "set -g default-command ${pkgs.zsh}/bin/zsh\n";
+    extraConfig = (builtins.readFile ./tmux/tmux.conf) + "set -g default-command ${pkgs.zsh}/bin/zsh\n";
   };
-
 }
