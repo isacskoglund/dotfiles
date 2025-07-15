@@ -22,6 +22,9 @@
     gh
     jq
     lf
+    colima
+    docker
+    docker-compose
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -108,13 +111,15 @@
   };
 
   # Setup zsh
-  programs.zsh.enable = true;
-  programs.zsh.history = {
-    save = 10000;
-    size = 10000;
-    path = "${config.home.homeDirectory}/.cache/zsh/history";
-  };
   programs.zsh = {
+    enable = true;
+    history = {
+      save = 10000;
+      size = 10000;
+      path = "${config.home.homeDirectory}/.cache/zsh/history";
+      share = true;
+      ignoreSpace = true;
+    };
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
     shellAliases = {
@@ -179,5 +184,11 @@
     ];
 
     extraConfig = (builtins.readFile ./tmux/tmux.conf) + "set -g default-command ${pkgs.zsh}/bin/zsh\n";
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true; # see note on other shells below
+    nix-direnv.enable = true;
   };
 }
