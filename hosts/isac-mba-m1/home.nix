@@ -61,6 +61,8 @@
     ".config/nvim".source = ./nvim;
     ".config/alacritty".source = ./alacritty;
     ".config/karabiner".source = ./karabiner;
+    ".config/colima/default/colima.yaml".source = ./colima/default/colima.yaml;
+    ".config/docker/config.json".source = ./docker/config.json;
   };
 
   # Home Manager can also manage your environment variables through
@@ -82,6 +84,9 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
+    COLIMA_HOME = "${config.home.homeDirectory}/.config/colima";
+    COLIMA_SAVE_CONFIG=0;
+    DOCKER_CONFIG = "${config.home.homeDirectory}/.config/docker";
   };
 
   # Let Home Manager install and manage itself.
@@ -127,7 +132,7 @@
       t = "tmux";
       ta = "tmux new-session -A -s default";
       # TODO: Avoid hardcoding the path to the flake, use a variable in ~/.zshenv or similar
-      switch = "nix run nix-darwin -- switch --flake ~/Repos/dotfiles/.config/nix";
+      switch = "sudo darwin-rebuild switch --flake ~/Repos/dotfiles#isac-mba-m1";
     };
     initContent = builtins.readFile ./.zshrc.extra.sh;
   };
