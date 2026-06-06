@@ -57,3 +57,7 @@ bindkey -M viins '^O' lfcd-widget
 bindkey -M emacs '^O' lfcd-widget
 
 autoload -U +X bashcompinit && bashcompinit
+
+# Activate devenv hook
+# (automatic activation of devenv when changing cwd).
+eval "$(devenv hook zsh)"
